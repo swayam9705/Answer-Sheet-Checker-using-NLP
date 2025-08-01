@@ -1,0 +1,46 @@
+.Hero {
+    width: calc(100vw - 50px);
+    margin: 20px auto;
+    height: 550px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.Hero__img {
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.Hero__img img {
+    width: 100%;
+    height: auto;
+}
+
+.Hero__text {
+    position: absolute;
+    text-align: center;
+}
+
+.Hero__text h2 {
+    font-size: 60px;
+    margin-bottom: 50px;
+}
+
+.Hero__text p {
+    margin: 0 auto;
+    color: grey;
+    width: 600px;
+}
+
+.Hero__text button {
+    margin-top: 50px;
+    background: var(--primary);
+    border-radius: 6px;
+    padding: 10px 25px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}

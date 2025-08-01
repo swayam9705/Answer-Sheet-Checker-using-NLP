@@ -1,0 +1,35 @@
+.Navbar {
+    width: calc(100vw - 50px);
+    margin: 10px auto;
+    padding: 10px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    /* background: rgb(240, 240, 240); */
+    border-radius: 10px;
+}
+
+.Navbar__logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.Navbar__logo img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.Navbar__links {
+    margin: 0 auto;
+}
+
+.Navbar__links a {
+    margin: 10px;
+    font-weight: 500;
+}
+
+.Navbar__links a.active {
+    color: var(--primary);
+}
