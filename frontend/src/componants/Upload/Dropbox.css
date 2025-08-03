@@ -1,0 +1,44 @@
+.Dropbox {
+    width: 650px;
+    border: 3px dashed lightgrey;
+    border-radius: 9px;
+    padding: 20px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content:  center;
+    position: relative;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.Dropbox:hover {
+    background: var(--primary-l);
+    border-color: var(--primary);
+}
+
+.Dropbox__upload-icon {
+    font-size: 50px;
+    color: var(--primary);
+}
+
+.Dropbox__title {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.Dropbox__desc {
+    color: grey;
+}
+
+.Dropbox__plus-icon {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 25px;
+    color: var(--primary);
+}
+
+.Dropbox__input {
+    display: none;
+}

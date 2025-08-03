@@ -1,3 +1,23 @@
 .Upload {
-    
+    margin: 100px 0;
+    text-align: center;
+}
+
+.Upload__title {
+    font-size: 40px;
+    margin: 20px;
+}
+
+.Upload__desc {
+    width: 700px;
+    margin: 0 auto;
+    font-size: 17px;
+    color: grey;
+}
+
+.Upload__container {
+    display: flex;
+    width: calc(100vw - 100px);
+    margin: 30px auto;
+    justify-content: space-around;
 }

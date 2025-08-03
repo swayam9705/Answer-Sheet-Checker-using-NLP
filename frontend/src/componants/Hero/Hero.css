@@ -13,6 +13,10 @@
 }
 
 .Hero__img img {
+    opacity: 0.8;
+}
+
+.Hero__img img {
     width: 100%;
     height: auto;
 }
@@ -31,10 +35,24 @@
     margin: 0 auto;
     color: grey;
     width: 600px;
+    margin-bottom: 50px;
 }
 
-.Hero__text button {
-    margin-top: 50px;
+.Hero__text .special {
+    position: relative;
+}
+
+.Hero__text .special::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    top: 100%;
+    left: 0;
+}
+
+.link__btn {
     background: var(--primary);
     border-radius: 6px;
     padding: 10px 25px;

@@ -1,0 +1,56 @@
+.Working {
+    text-align: center;
+}
+
+.Working__title {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.Working__desc {
+    color: grey;
+}
+
+.Working__processes {
+    margin: 50px auto;
+    display: flex;
+    width: calc(100vw - 30px);
+    justify-content: space-evenly;
+}
+
+.Process {
+    width: 450px;
+    border: 1px solid lightgrey;
+    min-height: 300px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.Process__number {
+    display: grid;
+    place-items: center;
+    font-size: 30px;
+    color: var(--primary);
+    background: var(--primary-l);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.Process__icon svg {
+    color: var(--primary);
+    font-size: 40px;
+}
+
+.Process__heading {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.Process__desc {
+    width: 90%;
+    color: grey;
+}

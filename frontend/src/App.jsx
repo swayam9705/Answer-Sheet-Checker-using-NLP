@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router"
+import { FileProvider } from "./StateManager/FileContext"
 
 // pages
 import Home from './pages/Home/Home'
@@ -11,12 +12,14 @@ import './App.css'
 function App() {
 
 	return (
-		<div className="App">
-			<Navbar />
-			<Routes>
-				<Route path="/" Component={Home} />
-			</Routes>
-		</div>
+		<FileProvider>
+			<div className="App">
+				<Navbar />
+				<Routes>
+					<Route path="/" Component={Home} />
+				</Routes>
+			</div>
+		</FileProvider>
 	)
 }
 

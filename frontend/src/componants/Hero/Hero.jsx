@@ -1,3 +1,5 @@
+import { Link } from "react-router"
+
 import "./Hero.css"
 import BackgroundImage from "../../images/background.png"
 
@@ -8,8 +10,8 @@ const Hero = () => {
                 <img src={BackgroundImage} alt="background image" />
                 <div className="Hero__text">
                     <h2>Streamline Your Grading with <br /> AnswerCheck </h2>
-                    <p>Effortlessly upload answer sheets, extract text, and get instant accuracy and authenticity, insights. Focus on teaching, not grading</p>
-                    <button>Get Started - Upload Now</button>
+                    <p>Effortlessly upload answer sheets, extract text, and get instant accuracy and authenticity, insights. <span className="special">Focus on teaching, not grading</span></p>
+                    <Link className="link__btn" to={"#"}>Get Started - Upload Now</Link>
                 </div>
             </div>
         </div>
