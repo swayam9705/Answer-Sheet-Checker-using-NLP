@@ -4,9 +4,8 @@
     padding: 10px;
     height: 60px;
     display: flex;
+    justify-content: center;
     align-items: center;
-    /* background: rgb(240, 240, 240); */
-    border-radius: 10px;
 }
 
 .Navbar__logo {
@@ -14,6 +13,7 @@
     align-items: center;
     font-weight: bold;
     font-size: 20px;
+    margin: 0 auto;
 }
 
 .Navbar__logo img {

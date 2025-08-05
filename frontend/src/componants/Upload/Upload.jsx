@@ -1,11 +1,36 @@
-import { useEffect, useRef, useContext } from "react"
-import { Link } from "react-router"
-import { FileContext } from "../../StateManager/FileContext";
+import useFileContext from "../../StateManager/FileContext";
 
 import "./Upload.css"
 import Dropbox from "./Dropbox";
 
 const Upload = () => {
+
+    const { fileData } = useFileContext()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        if (fileData.modelFile) {
+            const formData = new FormData()
+            formData.append("file", fileData.modelFile)
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/modelFile", {
+                    method: 'POST',
+                    body: formData
+                })
+
+                const result = await response.json()
+                console.log(result)
+
+            }
+            
+            catch (err) {
+                console.log("You messed up in uploading file", err)
+            }
+        }
+    }
+
     return (
         <div className="Upload">
             <h2 className="Upload__title">Upload your answer sheets</h2>
@@ -14,7 +39,10 @@ const Upload = () => {
                 <Dropbox type="student" />
             </div>
             <div className="Upload__btn">
-                <Link className="link__btn" to="#">Process & Review Extracted Text</Link>
+                <button
+                    onClick={handleSubmit}
+                    className="link__btn"
+                >Process & Review Extracted Text</button>
             </div>
         </div>
     )
