@@ -10,6 +10,9 @@ lerna-debug.log*
 # Python caches
 __pychache__
 
+demo_images
+demo_pdfs
+
 node_modules
 dist
 dist-ssr
