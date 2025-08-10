@@ -22,6 +22,7 @@
 
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from typing import List
 
 from PIL import Image
 from io import BytesIO
@@ -43,8 +44,7 @@ async def model_file(file: UploadFile = File(...)):
     try:
         if file.content_type.startswith("image/"):
             contents = await file.read()
-            pil_image = Image.open(BytesIO(contents)).convert('L')
-            pil_image.save(f"./demo_images/{randint(10, 99)}--{randint(10, 99)}.jpeg")
+            pil_image = Image.open(BytesIO(contents))
             print(np.array(pil_image))
         
 
@@ -57,5 +57,23 @@ async def model_file(file: UploadFile = File(...)):
         }
     except:
         return {
-            "message": "Error occurred"
+            "message": "Error occured"
+        }
+
+
+@app.post("/studentFiles/")
+async def student_files(files: List[UploadFile] = File(...)):
+    try:
+        uploaded_filenames = []
+
+        for file in files:
+            uploaded_filenames.append(file.filename)
+        
+        return {
+            "message": "Multiple files received",
+            "files": uploaded_filenames
+        }
+    except:
+        return {
+            "message": "Error occured"
         }

@@ -12,6 +12,7 @@ __pycache__/
 
 demo_images
 demo_pdfs
+*.ipynb
 
 node_modules
 dist

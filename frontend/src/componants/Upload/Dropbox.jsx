@@ -10,11 +10,7 @@ const Dropbox = ({ type }) => {
 
     const inputRef = useRef(null)
     const { fileData, addStudentFile, addModelFile } = useFileContext()
-
-    useEffect(() => {
-        console.log(fileData)
-    }, [fileData])
-
+    
     const handleModelFileChange = e => {
         const file = e.target.files[0]
         if (file) {

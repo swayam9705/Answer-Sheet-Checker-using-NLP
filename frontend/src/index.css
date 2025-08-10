@@ -9,6 +9,7 @@
 :root {
 	--primary: rgb(0, 150, 136);
 	--primary-l: rgb(209, 243, 240);
+	--primary-ll: rgb(235, 245, 244);
 }
 
 body {
