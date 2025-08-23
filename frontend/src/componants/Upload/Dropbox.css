@@ -13,7 +13,7 @@
 }
 
 .Dropbox:hover {
-    background: var(--primary-l);
+    background: var(--primary-ll);
     border-color: var(--primary);
 }
 

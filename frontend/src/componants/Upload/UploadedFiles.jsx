@@ -7,15 +7,26 @@ import { AiOutlineDelete } from "react-icons/ai";
 import "./UploadedFiles.css"
 
 const FileComponant = ({ file }) => {
+
+    const { deleteStudentFile } = useFileContext()
+
+    const handleDelete = e => {
+        // console.log(`Delete buttton clicked: ${file.name}`)
+        deleteStudentFile(file.name)
+    }
+
     return (
         <div className="FileComponant">
             <span className="FileComponant__icon file">
                 <CiFileOn />
             </span>
             <span className="FileComponant__name">
-                { file.filename } { file.name }
+                { file.name }
             </span>
-            <span className="FileComponant__icon delete">
+            <span
+                className="FileComponant__icon delete"
+                onClick={handleDelete}
+            >
                 <AiOutlineDelete />
             </span>
         </div>

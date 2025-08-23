@@ -5,7 +5,9 @@ export const FileContext = createContext(null)
 export const FileProvider = ({ children }) => {
     const [ fileData, setFileData ] = useState({
         modelFile: null,
-        studentFile: []
+        studentFile: [],
+        modelExtractedText: "",
+        studentExtractedText: ""
     })
 
     const addStudentFile = file => {
@@ -20,11 +22,23 @@ export const FileProvider = ({ children }) => {
         setFileData(prev => ({prev, studentFile: []}))
     }
 
+    const deleteStudentFile = (filename) => {
+        setFileData(prev => {
+            const filteredStudentFiles = fileData.studentFile.filter(file => file.name != filename)
+
+            return {
+                ...prev,
+                studentFile: filteredStudentFiles
+            }
+        })
+    }
+
     const value = {
         fileData,
         addStudentFile,
         addModelFile,
-        clearStudentFiles
+        clearStudentFiles,
+        deleteStudentFile
     }
 
     return (

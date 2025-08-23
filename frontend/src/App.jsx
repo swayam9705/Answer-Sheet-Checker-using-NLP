@@ -8,6 +8,7 @@ import Home from './pages/Home/Home'
 import Navbar from './componants/Navbar/Navbar'
 
 import './App.css'
+import Summary from "./pages/Summary/Summary"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
 				<Navbar />
 				<Routes>
 					<Route path="/" Component={Home} />
+					<Route path="/Summary" Component={Summary} />
 				</Routes>
 			</div>
 		</FileProvider>

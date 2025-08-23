@@ -23,11 +23,12 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
-
 from PIL import Image
 from io import BytesIO
 from random import randint
 import numpy as np
+
+from extract_text import extract_text
 
 app = FastAPI()
 
@@ -39,14 +40,14 @@ app.add_middleware(
     allow_headers = ["*"]
 )
 
+# extract the text from the image received as `file` and return it in the response
 @app.post("/modelFile/")
 async def model_file(file: UploadFile = File(...)):
     try:
         if file.content_type.startswith("image/"):
             contents = await file.read()
             pil_image = Image.open(BytesIO(contents))
-            print(np.array(pil_image))
-        
+            extracted_text = extract_text(pil_image)
 
         return {
             "message": "file recieved",
@@ -54,11 +55,13 @@ async def model_file(file: UploadFile = File(...)):
             "size": file.size,
             "size_units": "bytes",
             "type": file.content_type,
+            "extracted_text": extracted_text
         }
     except:
         return {
             "message": "Error occured"
         }
+
 
 
 @app.post("/studentFiles/")

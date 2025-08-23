@@ -1,0 +1,12 @@
+.Summary {
+    margin-top: 50px;
+}
+
+.Summary__title {
+    text-align: center;
+}
+
+.Summary__files--container {
+    display: flex;
+    justify-content: space-evenly;
+}
