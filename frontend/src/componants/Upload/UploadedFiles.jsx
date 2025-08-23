@@ -7,14 +7,6 @@ import { AiOutlineDelete } from "react-icons/ai";
 import "./UploadedFiles.css"
 
 const FileComponant = ({ file }) => {
-
-    const { deleteStudentFile } = useFileContext()
-
-    const handleDelete = e => {
-        // console.log(`Delete buttton clicked: ${file.name}`)
-        deleteStudentFile(file.name)
-    }
-
     return (
         <div className="FileComponant">
             <span className="FileComponant__icon file">
@@ -25,7 +17,7 @@ const FileComponant = ({ file }) => {
             </span>
             <span
                 className="FileComponant__icon delete"
-                onClick={handleDelete}
+                // onClick={handleDelete}
             >
                 <AiOutlineDelete />
             </span>
@@ -55,8 +47,8 @@ const UploadedFiles = () => {
             <div className="UploadedFiles__section">
                 <div className="UploadedFiles__title">Answer Sheets Files</div>
                 {
-                    fileData.studentFile.length > 0 ?
-                    fileData.studentFile.map(file => <FileComponant key={file.name} file={file} />)
+                    fileData.studentFile ?
+                    <FileComponant key={fileData.studentFile.name} file={fileData.studentFile} />
                     :
                     <span className="UploadedFiles__msg">
                         <RxCrossCircled />

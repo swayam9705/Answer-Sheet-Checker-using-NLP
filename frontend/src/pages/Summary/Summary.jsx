@@ -19,7 +19,7 @@ const Summary = () => {
                 />
                 <SummaryFileDisplay
                     type="Student"
-                    imageFile={fileData.studentFile[0]}
+                    imageFile={fileData.studentFile}
                 />
             </div>
         </div>

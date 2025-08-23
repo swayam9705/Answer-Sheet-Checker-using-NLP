@@ -41,8 +41,8 @@ app.add_middleware(
 )
 
 # extract the text from the image received as `file` and return it in the response
-@app.post("/modelFile/")
-async def model_file(file: UploadFile = File(...)):
+@app.post("/extractFileText/")
+async def extractFileText(file: UploadFile = File(...)):
     try:
         if file.content_type.startswith("image/"):
             contents = await file.read()
@@ -56,25 +56,6 @@ async def model_file(file: UploadFile = File(...)):
             "size_units": "bytes",
             "type": file.content_type,
             "extracted_text": extracted_text
-        }
-    except:
-        return {
-            "message": "Error occured"
-        }
-
-
-
-@app.post("/studentFiles/")
-async def student_files(files: List[UploadFile] = File(...)):
-    try:
-        uploaded_filenames = []
-
-        for file in files:
-            uploaded_filenames.append(file.filename)
-        
-        return {
-            "message": "Multiple files received",
-            "files": uploaded_filenames
         }
     except:
         return {

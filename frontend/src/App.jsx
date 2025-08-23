@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router"
 import { FileProvider } from "./StateManager/FileContext"
+import { TextExtractionContextProvider } from "./StateManager/TextExtraction"
 
 // pages
 import Home from './pages/Home/Home'
@@ -16,10 +17,12 @@ function App() {
 		<FileProvider>
 			<div className="App">
 				<Navbar />
-				<Routes>
-					<Route path="/" Component={Home} />
-					<Route path="/Summary" Component={Summary} />
-				</Routes>
+				<TextExtractionContextProvider>
+					<Routes>
+							<Route path="/" Component={Home} />
+							<Route path="/Summary" Component={Summary} />
+					</Routes>
+				</TextExtractionContextProvider>
 			</div>
 		</FileProvider>
 	)
