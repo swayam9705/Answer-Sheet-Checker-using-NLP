@@ -12,6 +12,10 @@
 	--primary-ll: rgb(235, 245, 244);
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	overflow-x: hidden;
 	font-family: "Inter", sans-serif;

@@ -11,7 +11,7 @@ const Hero = () => {
                 <div className="Hero__text">
                     <h2>Streamline Your Grading with <br /> AnswerCheck </h2>
                     <p>Effortlessly upload answer sheets, extract text, and get instant accuracy and authenticity, insights. <span className="special">Focus on teaching, not grading</span></p>
-                    <Link className="link__btn" to={"#"}>Get Started - Upload Now</Link>
+                    <a className="link__btn" href="#Upload">Get Started - Upload Now</a>
                 </div>
             </div>
         </div>

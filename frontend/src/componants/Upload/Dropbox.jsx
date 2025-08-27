@@ -65,7 +65,7 @@ const Dropbox = ({ type }) => {
                 {
                     type === "model" ?
                     <span>Upload the official answer key for comparison</span> :
-                    <span>Drag & drop to upload multiple student submissions.</span>
+                    <span>Click to upload multiple student submissions.</span>
                 }
             </p>
             <div className="Dropbox__plus-icon">

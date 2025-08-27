@@ -49,7 +49,7 @@ const Upload = () => {
     }
 
     return (
-        <div className="Upload">
+        <div className="Upload" id="Upload">
             <h2 className="Upload__title">Upload your answer sheets</h2>
             <div className="Upload__container">
                 <Dropbox type="model" />
