@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import SummaryFileDisplay from "../../componants/SummaryFileDisplay/SummaryFileDisplay"
 
 import useFileContext from "../../StateManager/FileContext"
@@ -15,11 +15,11 @@ const Summary = () => {
             <div className="Summary__files--container">
                 <SummaryFileDisplay
                     type="Model"
-                    imageFile={fileData.modelFile}
+                    pdfFile={fileData.modelFile}
                 />
                 <SummaryFileDisplay
                     type="Student"
-                    imageFile={fileData.studentFile}
+                    pdfFile={fileData.studentFile}
                 />
             </div>
         </div>

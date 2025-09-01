@@ -15,12 +15,6 @@ const FileComponant = ({ file }) => {
             <span className="FileComponant__name">
                 { file.name }
             </span>
-            <span
-                className="FileComponant__icon delete"
-                // onClick={handleDelete}
-            >
-                <AiOutlineDelete />
-            </span>
         </div>
     )
 }

@@ -46,7 +46,7 @@ const Dropbox = ({ type }) => {
                 }}
                 className="Dropbox__input"
                 type="file"
-                accept="image/*, .pdf"
+                accept=".pdf"
                 id="fileInput"
                 multiple={type !== "model"}
                 ref={inputRef}

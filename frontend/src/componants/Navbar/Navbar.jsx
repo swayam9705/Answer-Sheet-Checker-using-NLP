@@ -16,7 +16,7 @@ const Navbar = () => {
             <div className="Navbar__links">
                 <Link className={location.pathname === '/' && "active"} to={"/"}>Upload</Link>
                 <Link className={location.pathname === '/summary' && "active"} to={"summary"}>Extract Text</Link>
-                <Link to={"#"}>Results</Link>
+                {/* <Link to={"#"}>Results</Link> */}
             </div>
         </div>
     )

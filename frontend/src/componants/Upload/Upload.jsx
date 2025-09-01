@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router"
+
 import useFileContext from "../../StateManager/FileContext";
 import Dropbox from "./Dropbox";
 import UploadedFiles from "./UploadedFiles";
@@ -6,6 +8,8 @@ import "./Upload.css"
 import useTextExtractionContext from "../../StateManager/TextExtraction";
 
 const Upload = () => {
+
+    const navigation = useNavigate()
 
     const { fileData } = useFileContext()
     const { setModelText, setStudentText } = useTextExtractionContext()
@@ -35,11 +39,13 @@ const Upload = () => {
                 const modelResult = await sendModelFile.json()
                 const studentResult = await sendStudentFiles.json()
 
-                console.log(modelResult.extracted_text)
+                console.log(modelResult)
                 setModelText(modelResult.extracted_text)
 
-                console.log(studentResult.extracted_text)
+                console.log(studentResult)
                 setStudentText(studentResult.extracted_text)
+
+                navigation("/summary")
             }
             
             catch (err) {

@@ -26,7 +26,7 @@ from typing import List
 from PIL import Image
 from io import BytesIO
 from random import randint
-import numpy as np
+from PyPDF2 import PdfReader
 
 from extract_text import extract_text
 
@@ -44,19 +44,24 @@ app.add_middleware(
 @app.post("/extractFileText/")
 async def extractFileText(file: UploadFile = File(...)):
     try:
-        if file.content_type.startswith("image/"):
-            contents = await file.read()
-            pil_image = Image.open(BytesIO(contents))
-            extracted_text = extract_text(pil_image)
+        if file.content_type.startswith("application/pdf"):
 
-        return {
-            "message": "file recieved",
-            "filename": file.filename,
-            "size": file.size,
-            "size_units": "bytes",
-            "type": file.content_type,
-            "extracted_text": extracted_text
-        }
+            file_content = await file.read()
+            pdf_bytes_io = BytesIO(file_content)
+            pdf_reader = PdfReader(pdf_bytes_io)
+            extracted_text = ""
+
+            for page in pdf_reader.pages:
+                extracted_text += " " + page.extract_text() or ""
+
+            return {
+                "message": "file recieved",
+                "filename": file.filename,
+                "size": file.size,
+                "size_units": "bytes",
+                "type": file.content_type,
+                "extracted_text": extracted_text
+            }
     except:
         return {
             "message": "Error occured"
