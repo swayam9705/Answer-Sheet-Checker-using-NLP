@@ -4,6 +4,7 @@
 
 .Summary__title {
     text-align: center;
+    color: var(--primary);
 }
 
 .Summary__files--container {

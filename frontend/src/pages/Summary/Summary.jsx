@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import SummaryFileDisplay from "../../componants/SummaryFileDisplay/SummaryFileDisplay"
+import Evaluation from "../../componants/Evaluation/Evaluation"
 
 import useFileContext from "../../StateManager/FileContext"
 
@@ -22,6 +23,7 @@ const Summary = () => {
                     pdfFile={fileData.studentFile}
                 />
             </div>
+            <Evaluation />
         </div>
     )
 }

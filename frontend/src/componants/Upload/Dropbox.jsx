@@ -16,7 +16,6 @@ const Dropbox = ({ type }) => {
         if (file) {
             addModelFile(file)
         }
-        console.dir(file)
     }
 
     const handleStudentFileChange = e => {

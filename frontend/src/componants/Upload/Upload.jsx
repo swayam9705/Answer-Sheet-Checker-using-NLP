@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router"
 
-import useFileContext from "../../StateManager/FileContext";
-import Dropbox from "./Dropbox";
-import UploadedFiles from "./UploadedFiles";
+import useFileContext from "../../StateManager/FileContext"
+import Dropbox from "./Dropbox"
+import UploadedFiles from "./UploadedFiles"
 
 import "./Upload.css"
-import useTextExtractionContext from "../../StateManager/TextExtraction";
+import useTextExtractionContext from "../../StateManager/TextExtraction"
 
 const Upload = () => {
 
@@ -29,21 +29,16 @@ const Upload = () => {
                     method: 'POST',
                     body: formData1
                 })
+                const modelResult = await sendModelFile.json()
+                setModelText(modelResult.extracted_text)
                 
                 const sendStudentFiles = await fetch("http://127.0.0.1:8000/extractFileText", {
                     method: "POST",
                     body: formData2
                 })
-               
-
-                const modelResult = await sendModelFile.json()
                 const studentResult = await sendStudentFiles.json()
-
-                console.log(modelResult)
-                setModelText(modelResult.extracted_text)
-
-                console.log(studentResult)
                 setStudentText(studentResult.extracted_text)
+
 
                 navigation("/summary")
             }

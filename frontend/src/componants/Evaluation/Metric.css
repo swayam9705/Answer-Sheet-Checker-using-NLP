@@ -1,0 +1,38 @@
+.Metric {
+    width: 800px;
+    height: 80px;
+    margin: 10px auto;
+    border: 1px solid lightgrey;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.Metric__top {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.Metric__percent {
+    font-size: 16px;
+    background: var(--primary-l);
+    color: var(--primary);
+    padding: 2px 5px;
+    border-radius: 10px;
+}
+
+.Metric__meter {
+    margin: 20px auto;
+    width: 700px;
+    height: 10px;
+    background: rgb(234, 234, 234);
+    border-radius: 20px;
+}
+
+.Metric__bar {
+    height: 100%;
+    /* width: 40%; */
+    /* background: var(--primary-l); */
+    border-radius: 20px;
+    /* outline: 2px solid var(--primary); */
+}

@@ -1,5 +1,5 @@
 .SummaryFileDisplay {
-    width: 500px;
+    width: 700px;
     border: 1px solid lightgrey;
     border-radius: 8px;
     padding: 20px;
@@ -23,6 +23,10 @@
     border: 1px solid lightgrey;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgb(234, 234, 234);
+}
+
+.SummaryFileDisplay__extracted--text--title {
+    font-weight: bold;
 }
 
 .SummaryFileDisplay__extracted--text {
