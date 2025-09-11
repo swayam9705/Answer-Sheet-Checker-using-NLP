@@ -7,10 +7,31 @@ import useTextExtractionContext from "../../StateManager/TextExtraction"
 import DOMPurify from "dompurify"
 
 const SummaryFileDisplay = ({ type, pdfFile }) => {
-
     const { extractedText } = useTextExtractionContext()
+    const [pdfFileUrl, setPdfFileUrl] = useState(null)
 
-    const pdfFileUrl = URL.createObjectURL(pdfFile)
+    useEffect(() => {
+        if (pdfFile) {
+            const url = URL.createObjectURL(pdfFile)
+            setPdfFileUrl(url)
+            
+            // Cleanup URL when component unmounts or pdfFile changes
+            return () => {
+                URL.revokeObjectURL(url)
+            }
+        }
+    }, [pdfFile])
+
+    if (!pdfFile || !pdfFileUrl) {
+        return (
+            <div className="SummaryFileDisplay">
+                <h4 className="SummaryFileDisplay__title">{type} Answer Sheet</h4>
+                <div className="SummaryFileDisplay__loading">
+                    Loading PDF...
+                </div>
+            </div>
+        )
+    }
 
     const htmlModelText = extractedText.model.replace(/\n/, "<br>")
     const htmlStudentText = extractedText.student.replace(/\n/, "<br>")

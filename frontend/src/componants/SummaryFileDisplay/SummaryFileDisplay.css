@@ -33,4 +33,11 @@
     font-size: 14px;
     padding: 20px;
     color: #333333;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    white-space: pre-wrap;
+    box-sizing: border-box;
 }

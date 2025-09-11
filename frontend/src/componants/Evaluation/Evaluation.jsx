@@ -117,8 +117,8 @@ const Evaluation = () => {
                     percent={Math.round(evaluation.toneScore * 100)}
                 />
                 <Metric
-                    parameter="Word Count"
-                    percent={Math.round(wordCount.student / wordCount.model * 100)}
+                    parameter={`Word Count: ${wordCount.student}/${wordCount.model}`}
+                    percent={Math.min(Math.round(wordCount.student / wordCount.model * 100), 100)}
                 />
             </div>
             <div className="Evaluation__feedback">
