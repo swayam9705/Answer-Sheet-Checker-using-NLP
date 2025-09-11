@@ -1,14 +1,21 @@
 import nltk
 from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import word_tokenize, sent_tokenize
+import spacy
 from nltk.stem import WordNetLemmatizer
 from sentence_transformers import SentenceTransformer, util
+from textblob import TextBlob
+import re
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 # The following statements are need to be ran only once
 # nltk.download("punkt_tab")
 # nltk.download("punkt")
 # nltk.download("stopwords")
 # nltk.download("wordnet")
+
+nlp = spacy.load("en_core_web_md")
 
 def preprocess_text(text: str):
     lemmatizer = WordNetLemmatizer()
@@ -23,7 +30,6 @@ def preprocess_text(text: str):
     return cleaned_tokens
 
 def keyword_matching(model_answer, student_answer):
-    score = 0
     matched_keywords = set()
     processed_model = preprocess_text(model_answer)
     processed_student = preprocess_text(student_answer)
@@ -45,8 +51,43 @@ def semantic_similarity(model_answer, student_answer):
 
     return cosine_score.item()
 
-if __name__ == "__main__":
-    model_text = """Children make mistakes in dark"""
-    student_text = """I am batman. Gotham city needs me."""
+def _get_tone_score(text: str) -> dict:
+    blob = TextBlob(text)
+    polarity = blob.sentiment.polarity
+    subjectivity = blob.sentiment.subjectivity
 
-    print(semantic_similarity(model_text, student_text))
+    return {
+        "polarity": polarity,
+        "subjectivity": subjectivity,
+        "avg_score": (polarity + subjectivity) / 2
+    }
+
+def get_tone(text: str):
+    tone_score = _get_tone_score(text)
+    pol = tone_score["polarity"]
+    sub = tone_score["subjectivity"]
+    avg = tone_score["avg_score"]
+
+    if pol > 0.6:
+        if sub > 0.6:
+            return "Enthusastic & Personal", avg
+        else:
+            return "Positive & Factual", avg
+    elif pol < 0.3:
+        if sub > 0.6:
+            return "Personal & Critical", avg
+        else:
+            return "Neutral & Factual", avg
+    else:
+        if sub > 0.6:
+            return "Expressive & Emotional", avg
+        else:
+            return "Factual & Objective", avg
+
+
+if __name__ == "__main__":
+    text_happy = "I am so excited and overjoyed to finally start my new project!"
+    text_anger = "I am furious with the customer service; it was absolutely terrible."
+    text_sadness = "I feel so lonely and disappointed after the result."
+
+    print(get_tone(text_happy))

@@ -11,6 +11,7 @@
     display: flex;
     justify-content: space-between;
     font-weight: bold;
+    color: var(--primary);
 }
 
 .Metric__percent {
@@ -25,14 +26,11 @@
     margin: 20px auto;
     width: 700px;
     height: 10px;
-    background: rgb(234, 234, 234);
+    background: rgb(243, 243, 243);
     border-radius: 20px;
 }
 
 .Metric__bar {
     height: 100%;
-    /* width: 40%; */
-    /* background: var(--primary-l); */
     border-radius: 20px;
-    /* outline: 2px solid var(--primary); */
 }

@@ -8,7 +8,6 @@ import DOMPurify from "dompurify"
 
 const SummaryFileDisplay = ({ type, pdfFile }) => {
 
-    const { fileData } = useFileContext()
     const { extractedText } = useTextExtractionContext()
 
     const pdfFileUrl = URL.createObjectURL(pdfFile)
@@ -40,8 +39,7 @@ const SummaryFileDisplay = ({ type, pdfFile }) => {
                 )
             }}
             >
-            </p>
-        
+            </p>        
         </div>
     )
 }

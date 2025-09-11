@@ -6,7 +6,7 @@ from io import BytesIO
 from PyPDF2 import PdfReader
 from pydantic import BaseModel
 
-from evaluation import keyword_matching, semantic_similarity
+from evaluation import keyword_matching, semantic_similarity, get_tone
 
 app = FastAPI()
 
@@ -44,6 +44,10 @@ async def extractFileText(file: UploadFile = File(...)):
                 "type": file.content_type,
                 "extracted_text": extracted_text
             }
+        else:
+            return {
+                "message": "Invalid file type"
+            }
     except:
         return {
             "message": "Error occured"
@@ -59,12 +63,17 @@ async def evaluation(answers: Answers):
 
         semantics = semantic_similarity(model_answer, student_answer)
 
+        tone, score = get_tone(student_answer)
+
         return {
             "message": "200 OK",
             "keyword": percent,
-            "semantics": semantics
+            "semantics": semantics,
+            "tone": tone,
+            "toneScore": score
         }
-    except:
+    except Exception as e:
+        print(e)
         return {
             "message": "request invalid"
         }
